@@ -1,0 +1,78 @@
+@import 'rupture'
+@import 'nib/lib/nib'
+@import 'typographic/stylus/typographic'
+@import 'jeet/stylus/jeet/_jeet'
+
+rupture.mobile-cutoff = 480px
+rupture.tablet-cutoff = 1050px
+
+$font = "futura-pt", sans-serif
+
+$text-color          = #F5EFE9
+$line-color          = rgba(#D7D7D7, .3)
+$bg-color            = #29363B
+$clay-color          = #D35A29
+
+$line-height-ratio   = 1.75
+$heading-ratio       = $golden
+$body-font           = $font
+$body-font-weight    = 300
+$body-color          = $text-color
+$heading-font        = $font
+$heading-font-weight = 400
+$heading-color       = $text-color
+$min-font            = 18px
+$max-font            = 20px
+$min-width           = 600px
+$max-width           = 1000px
+$vertical-rhythm     = true
+
+global-reset()
+typographic()
+
+absolute-fill()
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+
+@import '_portfolio'
+@import '_home'
+@import '_menu'
+@import '_modal'
+
+// utility
+body
+    background-color $bg-color
+    color $text-color
+    font-family $font
+p
+    letter-spacing .04em
+
+a
+    color $text-color
+    text-decoration none
+    &:hover
+        //border-bottom 1px solid $clay-color
+        color $clay-color
+
+// utility
+.container
+    j-center(960px, 0)
+
+// utility
+.clearfix
+    j-cf()
+
+for i in 1 2 3 4 5 6 7 8 9 10
+    .m-top-{i}
+            margin-top vr-block(i)
+for i in 1 2 3 4 5 6 7 8 9 10
+    .m-top-p{i}
+            margin-top vr-block(i/10)
+
+.col-1-2
+    j-column(1/2)
+.col-1-3
+    j-column(1/3)

@@ -1,0 +1,41 @@
+extends ./_boilerplate-layout.jade
+
+block bpcontent
+    .container
+        .home-hero
+            h2.home-hero__title Aneesh Bhoopathy
+            h5.home-hero__subtitle UX/UI designer <br> and front-end developer.
+
+        .menu
+            .menu__item.menu__item--active
+                a(href='#') Work
+            .menu__item
+                a(href='https://dribbble.com/abhoopathy') Dribbble
+            .menu__item
+                a(href='mailto:aneesh.bhoopathy@gmail.com') Email
+
+        .portfolio
+            each tile in public._data.tiles
+                a.portfolio-tile(data-js-tile, class='portfolio-tile__#{tile.name}', href='/#{tile.name}')
+                    .portfolio-tile__background(style='background-image: url("portfolio/#{tile.name}/tile.png")')
+                    .portfolio-tile__overlay
+                        img.portfolio-tile__logo(src='portfolio/#{tile.name}/logo.svg')
+
+        .modal(data-js-modal)
+            .modal__screen(data-js-modal-close)
+            .modal__wrapper
+                div(data-js-modal-content)
+            .modal__close-button(data-js-modal-close)
+                a(href='#') +
+            .modal__prev-button(data-js-modal-prev)
+                a(href='#') ⟵ 
+            .modal__next-button(data-js-modal-next)
+                a(href='#') ⟶
+
+    script.
+        if (screen && screen.width > 1050) {
+            document.write('<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="scripts/main.js"><\/script>');
+        }

@@ -1,3 +1,0 @@
-# abhoopathy.github.io
-
-amazing 

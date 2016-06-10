@@ -1,0 +1,84 @@
+.portfolio
+    clear both
+    margin-top vr-block(1)
+
+.portfolio-tile
+    cursor pointer
+    height 240px
+    j-column(1/4, gutter: 0)
+    background-color black
+    position relative
+
+    &:hover
+        .portfolio-tile__logo
+            transform scale(1.1, 1.1)
+
+$brandColors =  {
+    point: #D35A29,
+    gather: #44B9DE,
+    bench: #098B8C,
+    venmo: #3D95CE
+}
+for $name, $color in $brandColors
+    .portfolio-tile__{$name}
+        .portfolio-tile__overlay
+            background-color rgba($color, .85)
+            &:hover
+                background-color rgba($color, 1)
+
+.portfolio-tile__logo
+    width 60%
+    transition transform 150ms ease-in-out 0ms
+
+.portfolio-tile__background
+    absolute-fill()
+    background-size cover
+
+.portfolio-tile__overlay
+    transition background-color 150ms ease-in-out 0ms
+    absolute-fill()
+    display flex
+    justify-content center
+    align-items center
+.portfolio-tile__contents
+    absolute-fill()
+
+
+.portfolio-piece
+    margin-top vr-block(1)
+    margin-bottom vr-block(1)
+    j-column(10/12, offset: 1/12)
+
+    &[data-js-portfolio-piece-in-modal=true]
+        j-center(780px, 0)
+
+.portfolio-piece__title
+    j-column(3/5)
+    h1
+        margin-top 0 !important
+
+.portfolio-piece__tags
+    j-column(2/5)
+
+.portfolio-piece__body img
+    max-width 100%
+
+//.tags
+.tags__tag
+    display inline-block
+    border 1px solid $line-color
+    font-size .7rem
+    text-transform uppercase
+    border-radius 3px
+    padding 6px
+    margin 3px
+    white-space nowrap
+
++mobile()
+
+    .portfolio-piece__title, .portfolio-piece__tags
+        j-stack()
+    .portfolio-tile
+        j-column(1/2, gutter: 0)
+        height 180px
+
